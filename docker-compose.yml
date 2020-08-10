@@ -1,0 +1,19 @@
+version: '3'
+services:
+  author:
+    image: aem-author
+    build: ./aem-author
+    ports:
+      - "4502:4502"
+  publish:
+    image: aem-publish
+    build: ./aem-publish
+    ports:
+      - "4503:4503"
+  dispatcher:
+    image: aem-dispatcher
+    build: ./aem-dispatcher
+    ports:
+      - "80:80"
+    depends_on:
+      - "aem-publish"
